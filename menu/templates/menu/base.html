@@ -1,0 +1,70 @@
+{% load static %}
+
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'menu/styles/base.css' %}">
+    {% block extrahead %}{% endblock %}
+    <script src="https://kit.fontawesome.com/4cbd713a68.js" crossorigin="anonymous" async></script>
+</head>
+<body>
+    <div class="navbar">
+        <div class="container">
+            <div id="infos">
+                <a href="{% url 'home' %}"><h1>Pizzerria Valentino</h1></a>
+                <h2><a class="tel" href="tel:+3281569538">081/56 95 38</a> (Fermé le mardi)</h2>
+                <p><time>11:30</time> - <time>14:00</time> (sauf dimanche)</p>
+                <p><time>18:00</time> - <time>22:00</time></p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}">Accueil</a></li>
+                    <li><a href="{% url 'menu' %}">La carte</a></li>
+                    <li><a href="{% url 'infos' %}">Infos</a></li>
+                </ul>
+            </nav>
+            <div class="dropdown">
+                <img class="dropbtn" src="{% static 'menu/images/menu.png' %}" onclick="openNav()"></img>
+              </div>
+        </div>
+    </div>
+
+    <div id="sideMenu" class="dropdown-content">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="{% url 'home' %}">Acceuil</a>
+        <a href="{% url 'menu' %}">La carte</a>
+        <a href="{% url 'infos' %}">Infos</a>
+    </div>
+
+    {% block content %}
+
+    {% endblock %}
+
+    <div class="footer">
+        <div class="container">
+            <div>
+                <p>Pizzeria Valentino,</p>
+                <p>391 Chaussée de namur, 5030 Gembloux</p>
+                <p><a class="tel" href="tel:+3281569538">081/56 95 38</a> ou <a class="tel" href="tel:+32476734562">0476/73 45 62</a></p>
+            </div>
+            <div><a href="https://www.facebook.com/profile.php?id=100063477431254" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook fa-2xl"></i></a></div>
+        </div>
+        <div class="copyright">
+            &copy; 2022 Created by Ben Beya Samy
+        </div>
+    </div>
+    <script>
+        function openNav() {
+            document.getElementById("sideMenu").style.right = "0px";
+        }
+        
+        function closeNav() {
+            document.getElementById("sideMenu").style.right = "-220px";
+        }
+    </script>
+    {% block scripts %} {% endblock %}
+</body>
+</html>
